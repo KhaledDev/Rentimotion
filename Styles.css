@@ -1,0 +1,309 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
+
+.nav-buttons .btn-outline-primary {
+    border-color: navy;
+    color: navy;
+}
+
+.nav-buttons .btn-primary {
+    background-color: navy;
+    border-color: navy;
+}
+
+.hero {
+    background: #f4f4f4;
+}
+
+.hero h2 span {
+    color: navy;
+    font-weight: bold;
+}
+
+.hero em {
+    font-style: italic;
+}
+
+.hero .btn-primary {
+    background-color: navy;
+    border-color: navy;
+}
+
+.terms a {
+    color: navy;
+}
+
+.vehicle-types {
+    background-color: #333;
+    color: white;
+}
+
+
+.features {
+    background-color: #222;
+    color: white;
+}
+
+
+.pricing {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: black;
+    color: white;
+}
+
+.pricing h2 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.pricing p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.pricing-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.pricing-card {
+    flex: 1;
+    max-width: 300px;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.dark-card {
+    background-color: #222;
+    color: white;
+}
+
+.blue-card {
+    background-color: navy;
+    color: white;
+}
+
+.pricing-card h3 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.pricing-card .price {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.pricing-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.pricing-card ul li {
+    margin: 8px 0;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.economy-btn {
+    background-color: navy;
+    color: white;
+}
+
+.standard-btn {
+    background-color: white;
+    color: navy;
+}
+
+.luxury-btn {
+    background-color: navy;
+    color: white;
+}
+
+/* Footer styles */
+footer {
+    background-color: #f9f9f9;
+    padding: 40px 60px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 20px;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.newsletter {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.newsletter input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.newsletter button {
+    background-color: navy;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 14px;
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links li a {
+    text-decoration: none;
+    color: black;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Modal styles */
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow: auto;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.modal.show {
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.modal.show .modal-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #333;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+.modal h2 {
+    margin-top: 0;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.modal p {
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
