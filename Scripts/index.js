@@ -1,84 +1,74 @@
-import { openModal as baseOpenModal, closeModal } from './Modules/modal.js';
+/**
+ * Main JavaScript file for Rentimotion website
+ */
+
+import { openModal, closeModal } from './Modules/modal.js';
 import { fadeIn } from './Modules/animation.js';
-import { createModal } from './Modules/modalTemplate.js';
+import { openBookingModal } from './Modules/booking.js';
+import { openVehicleTypeModal, openFeatureModal, openPricingModal, requestCallback } from './Modules/modalContent.js';
+import { setupNewsletterForms } from './Modules/newsletter.js';
+import { showAlert } from './Modules/alerts.js';
 
-// Make openModal and closeModal globally accessible
-window.openModal = baseOpenModal;
+// Make functions globally accessible
+window.openModal = openModal;
 window.closeModal = closeModal;
+window.openBookingModal = openBookingModal;
+window.openVehicleTypeModal = openVehicleTypeModal;
+window.openFeatureModal = openFeatureModal;
+window.openPricingModal = openPricingModal;
+window.requestCallback = requestCallback;
+window.showAlert = showAlert;
 
-// Function to open vehicle type modal
-window.openVehicleTypeModal = (type) => {
-    let content = '';
-    switch (type) {
-        case 'luxury':
-            content = `<p>Details about Luxury Cars...</p>`;
-            break;
-        case 'compact':
-            content = `<p>Details about Compact Cars...</p>`;
-            break;
-        case 'convertible':
-            content = `<p>Details about Convertibles...</p>`;
-            break;
-        case 'suv':
-            content = `<p>Details about SUVs...</p>`;
-            break;
-        case 'hatchback':
-            content = `<p>Details about Hatchbacks...</p>`;
-            break;
-        default:
-            content = `<p>No details available.</p>`;
-    }
-    const modalContent = createModal(`Vehicle Type - ${type}`, content);
-    document.body.appendChild(modalContent);
-    baseOpenModal('genericModal'); // Open the modal
-};
-
-// Function to open features modal
-window.openFeatureModal = (feature) => {
-    let content = '';
-    switch (feature) {
-        case 'selection':
-            content = `<p>Details about Extensive Vehicle Selection...</p>`;
-            break;
-        case 'booking':
-            content = `<p>Details about Effortless Online Booking...</p>`;
-            break;
-        case 'support':
-            content = `<p>Details about Dedicated 24/7 Support...</p>`;
-            break;
-        default:
-            content = `<p>No details available.</p>`;
-    }
-    const modalContent = createModal(`Feature - ${feature}`, content);
-    document.body.appendChild(modalContent);
-    baseOpenModal('genericModal'); // Open the modal
-};
-
-// Function to open pricing modal
-window.openPricingModal = (plan) => {
-    let content = '';
-    switch (plan) {
-        case 'economy':
-            content = `<p>Details about Economy Plan...</p>`;
-            break;
-        case 'standard':
-            content = `<p>Details about Standard Plan...</p>`;
-            break;
-        case 'luxury':
-            content = `<p>Details about Luxury Plan...</p>`;
-            break;
-        default:
-            content = `<p>No details available.</p>`;
-    }
-    const modalContent = createModal(`Pricing - ${plan}`, content);
-    document.body.appendChild(modalContent);
-    baseOpenModal('genericModal'); // Open the modal
-};
-
-// Apply fade-in to all elements with class 'fade-in'
+// Initialize the application when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
+    // Apply fade-in to all elements with class 'fade-in'
     const elements = document.querySelectorAll('.fade-in');
     elements.forEach(element => {
         fadeIn(element);
     });
+    
+    // Setup newsletter forms
+    setupNewsletterForms();
+    
+    // "Book Now" button in header
+    const bookNowBtn = document.querySelector('.nav-buttons .btn-outline-primary');
+    if (bookNowBtn) {
+        bookNowBtn.removeAttribute('onclick');
+        bookNowBtn.addEventListener('click', () => {
+            openBookingModal();
+        });
+    }
+    
+    // "Learn More" button in header
+    const learnMoreBtn = document.querySelector('.nav-buttons .btn-primary');
+    if (learnMoreBtn) {
+        learnMoreBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: document.getElementById('features').offsetTop,
+                behavior: 'smooth'
+            });
+        });
+    }
+    
+    // Initialize any Bootstrap components that require JavaScript
+    initializeBootstrapComponents();
+    
+    console.log('Rentimotion application initialized');
 });
+
+/**
+ * Initialize Bootstrap components that require JavaScript
+ */
+function initializeBootstrapComponents() {
+    // Initialize tooltips
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+    
+    // Initialize popovers
+    const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+    popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl);
+    });
+}
