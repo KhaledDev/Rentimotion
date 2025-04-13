@@ -13,7 +13,6 @@ export function fadeIn(element, duration = 500) {
             window.requestAnimationFrame(animation);
         }
     }
-
     window.requestAnimationFrame(animation);
 }
 
